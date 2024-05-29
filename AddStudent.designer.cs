@@ -253,7 +253,7 @@ namespace ElDee
             this.dateBirthPicker.Name = "dateBirthPicker";
             this.dateBirthPicker.Size = new System.Drawing.Size(284, 29);
             this.dateBirthPicker.TabIndex = 7;
-            this.dateBirthPicker.CustomFormat = "yyyy-mm-dd";
+            this.dateBirthPicker.CustomFormat = "yyyy-MM-dd";
             this.dateBirthPicker.Format = DateTimePickerFormat.Custom;
             // 
             // dateBirthLabel

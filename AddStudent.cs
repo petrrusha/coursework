@@ -263,10 +263,16 @@ namespace ElDee
                     ///
                     var idx = groupComboBox.SelectedIndex;
                     var grp = (string)groupComboBox.Items[idx];
-                    MessageBox.Show(dateBirthPicker.Text);
+                    //MessageBox.Show(dateBirthPicker.Text);
                     var sqlFlag = Db.SqlInsert(
                             $@"
-                        INSERT INTO Students
+                        INSERT INTO Students(
+                            last_name,
+                            first_name,
+                            second_name,
+                            date_of_birth,
+                            group_id
+                            )
                         VALUES(
                         '{lastNameTb.Text}',
                         '{firstNameTb.Text}',

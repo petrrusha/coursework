@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -140,8 +141,10 @@ namespace ElDee
                     facultyComboBox.SelectedItem != null && departmentComboBox.SelectedItem != null &&
                     specialtyComboBox.SelectedItem != null && groupComboBox.SelectedItem != null)
             {
-                MessageBox.Show("Данные успешно обновлены!");
-                Db.SqlInsert($@"
+                var idx = groupComboBox.SelectedIndex;
+                var grp = (string)groupComboBox.Items[idx];
+
+                var sql = Db.SqlInsert($@"
                 UPDATE top(1) 
                 Students 
                 SET 
@@ -149,11 +152,20 @@ namespace ElDee
                 first_name = '{firstNameTb.Text}',
                 second_name = '{secondNameTb.Text}',
                 date_of_birth = '{dateBirthPicker.Value}',
-                group_id = (SELECT id FROM Groups WHERE Groups.group_number = '{groupComboBox.SelectedItem.ToString().Substring(groupComboBox.SelectedItem.ToString().Length - 3)}') 
-                where id = 2086;
-
+                group_id = (SELECT id FROM Groups WHERE Groups.group_number = '{grp.Substring(9)}') 
+                where id = {studentId};
                 ");
-                Close();
+                var date = dateBirthPicker.Value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+                //MessageBox.Show(date);
+                if (sql)
+                {
+                    MessageBox.Show("Данные успешно обновлены!");
+                    Close();
+                }else
+                {
+                    MessageBox.Show("Сломалось");
+                }
+                
             }
             else
                 MessageBox.Show("Не все поля заполнены!!!");

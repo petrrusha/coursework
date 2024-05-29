@@ -1,4 +1,6 @@
-﻿namespace ElDee
+﻿using System.Windows.Forms;
+
+namespace ElDee
 {
     partial class UpdateStudentForm
     {
@@ -317,5 +319,6 @@
         private System.Windows.Forms.Label firstNameLabel;
         private System.Windows.Forms.TextBox lastNameTb;
         private System.Windows.Forms.Label lastNameLabel;
+        
     }
 }

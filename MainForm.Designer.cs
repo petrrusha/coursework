@@ -77,7 +77,7 @@
             // добавитьСтудентаToolStripMenuItem
             // 
             this.добавитьСтудентаToolStripMenuItem.Name = "добавитьСтудентаToolStripMenuItem";
-            this.добавитьСтудентаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.добавитьСтудентаToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.добавитьСтудентаToolStripMenuItem.Text = "Добавить студента";
             this.добавитьСтудентаToolStripMenuItem.Click += new System.EventHandler(this.добавитьСтудентаToolStripMenuItem_Click);
             // 
