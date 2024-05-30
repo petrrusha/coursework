@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -89,182 +90,20 @@ namespace ElDee
 
         }
 
-        //кнопка выбора файла
-        private void chooseFileButton_Click(object sender, EventArgs e)
-        {
-            string line;
-            var f = new OpenFileDialog {Filter = "txt files (*.txt)|*.txt"};
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                dataGridView1.Rows.Clear();
-                using (var file = new StreamReader(f.FileName))
-                {
-                    while ((line = file.ReadLine()) != null)
-                        dataGridView1.Rows.Add(line.Split());
-
-                    pathFileLabel.Text = f.FileName;
-                }
-
-            }
-        }
-
+        
         //кнопка добавить
         private void addButton_Click(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedTab == tabPage2)
-            {
-                var flag = true;
-                var regLastName = new Regex(@"^[а-яА-ЯёЁ]+$");
-                var regFirstName = new Regex(@"^[а-яА-ЯёЁ]+$");
-                var regSecondName = new Regex(@"^[а-яА-ЯёЁ]+$");
-                var regDate = new Regex(@"(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d");
-                var regGroup = new Regex(@"^[0-9][а-яА-ЯёЁ]{1,4}[-][0-9][а-яА-ЯёЁ]{1,2}[-][0-9][0-9][0-9]+$");
-
-                foreach (DataGridViewRow row in dataGridView1.Rows)
-                {
-                    if (row.Cells[0].Value == null)
-                    {
-                        MessageBox.Show($"Ошибка!\nПустая ячейка!");
-                        dataGridView1.ClearSelection();
-                        row.Cells[0].Selected = true;
-                        flag = false;
-                        break;
-                    }
-                    if (!regLastName.IsMatch(row.Cells[0].Value.ToString()))
-                    {
-                        MessageBox.Show($"Ошибка!\n{row.Cells[0].Value}");
-                        dataGridView1.ClearSelection();
-                        row.Cells[0].Selected = true;
-                        flag = false;
-                        break;
-                    }
-                    if (row.Cells[1].Value == null)
-                    {
-                        MessageBox.Show($"Ошибка!\nПустая ячейка!");
-                        dataGridView1.ClearSelection();
-                        row.Cells[1].Selected = true;
-                        flag = false;
-                        break;
-                    }
-                    if (!regFirstName.IsMatch(row.Cells[1].Value.ToString()))
-                    {
-                        MessageBox.Show($"Ошибка!\n{row.Cells[1].Value}");
-                        dataGridView1.ClearSelection();
-                        row.Cells[1].Selected = true;
-                        flag = false;
-                        break;
-                    }
-                    if (row.Cells[2].Value == null)
-                    {
-                        MessageBox.Show($"Ошибка!\nПустая ячейка!");
-                        dataGridView1.ClearSelection();
-                        row.Cells[2].Selected = true;
-                        flag = false;
-                        break;
-                    }
-                    if (!regSecondName.IsMatch(row.Cells[2].Value.ToString()))
-                    {
-                        MessageBox.Show($"Ошибка!\n{row.Cells[2].Value}");
-                        dataGridView1.ClearSelection();
-                        row.Cells[2].Selected = true;
-                        flag = false;
-                        break;
-                    }
-                    if (row.Cells[3].Value == null)
-                    {
-                        MessageBox.Show($"Ошибка!\nПустая ячейка!");
-                        dataGridView1.ClearSelection();
-                        row.Cells[3].Selected = true;
-                        flag = false;
-                        break;
-                    }
-                    if (!regDate.IsMatch(row.Cells[3].Value.ToString()))
-                    {
-                        MessageBox.Show($"Ошибка!\n{row.Cells[3].Value}");
-                        dataGridView1.ClearSelection();
-                        row.Cells[3].Selected = true;
-                        flag = false;
-                        break;
-                    }
-                    if (row.Cells[4].Value == null)
-                    {
-                        MessageBox.Show($"Ошибка!\nПустая ячейка!");
-                        dataGridView1.ClearSelection();
-                        row.Cells[4].Selected = true;
-                        flag = false;
-                        break;
-                    }
-                    if (!regGroup.IsMatch(row.Cells[4].Value.ToString()))
-                    {
-                        MessageBox.Show($"Ошибка!\n{row.Cells[4].Value}");
-                        dataGridView1.ClearSelection();
-                        row.Cells[4].Selected = true;
-                        flag = false;
-                        break;
-                    }
-                }
-
-                if (flag)
-                {
-                    var sqlFlag = false;
-                    foreach (DataGridViewRow row in dataGridView1.Rows)
-                    {
-                        var firstName = row.Cells[1].Value.ToString().ToLower();
-                        var correctFirstName = firstName[0].ToString().ToUpper() + firstName.Substring(1);
-                        var secondName = row.Cells[2].Value.ToString().ToLower();
-                        var correctSecondName = secondName[0].ToString().ToUpper() + secondName.Substring(1); ;
-                        var lastName = row.Cells[0].Value.ToString().ToLower();
-                        var correctLastName = lastName[0].ToString().ToUpper() + lastName.Substring(1); ;
-                        var dateOfBirth = row.Cells[3].Value.ToString().ToLower();
-                        var group = row.Cells[4].Value.ToString().Substring(row.Cells[4].Value.ToString().Length - 3);
-                        sqlFlag = Db.SqlInsert(
-                            $@"
-                        INSERT INTO Students
-                        VALUES(
-                        '{correctFirstName}',
-                        '{correctSecondName}',
-                        '{correctLastName}',
-                        '{dateOfBirth}',
-                        (SELECT id FROM Groups WHERE Groups.group_number = '{group}')
-                        )");
-                        if (!sqlFlag)
-                        {
-                            dataGridView1.ClearSelection();
-                            row.Cells[4].Selected = true;
-                        }
-                    }
-
-                    if (pathFileLabel.Text == @"Выберите текстовый файл со студентами...")
-                    {
-                        MessageBox.Show("Вы не выбрали файл!");
-                    }
-                    else
-                    {
-                        if (sqlFlag)
-                        {
-                            MessageBox.Show("Данные успешно добавлены!");
-                            Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Некорректная группа!");
-                        }
-                    }
-
-                }
-            }
-            else
-            {
+            
                 if (lastNameTb.Text != "" && firstNameTb.Text != "" && secondNameTb.Text != "" &&
                     facultyComboBox.SelectedItem != null && departmentComboBox.SelectedItem != null &&
                     specialtyComboBox.SelectedItem != null && groupComboBox.SelectedItem != null)
                 {
 
-                    ////////////////////////////////////////////
-                    ///
+                    
                     var idx = groupComboBox.SelectedIndex;
                     var grp = (string)groupComboBox.Items[idx];
-                    //MessageBox.Show(dateBirthPicker.Text);
+                   
 
 
                     var checkStudent = Db.SqlSelect(
@@ -279,9 +118,14 @@ namespace ElDee
                         second_name = '{secondNameTb.Text}' AND
                         date_of_birth = '{dateBirthPicker.Text}'
                         ");
-                    if (checkStudent == null)
-                    {
 
+                var studentExists = false;
+
+                foreach (var item in checkStudent)
+                    if (item[0] != null) studentExists = true;
+
+                if (!studentExists)
+                    {
 
                         var sqlFlag = Db.SqlInsert(
                                 $@"
@@ -318,7 +162,7 @@ namespace ElDee
                 else
                     MessageBox.Show("Не все поля заполнены!!!");
                 
-            }
+            
       
         }
 

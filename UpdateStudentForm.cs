@@ -175,7 +175,6 @@ namespace ElDee
                 where id = {studentId};
                 ");
                     var date = dateBirthPicker.Value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
-                    //MessageBox.Show(date);
                     if (sql)
                     {
                         MessageBox.Show("Данные успешно обновлены!");

@@ -241,7 +241,6 @@ namespace ElDee
 
                 if (myList1.Count != 0)
                 {
-                    //button2.Enabled = true;
                     button3.Enabled = true;
                     infoButton.Enabled = true;
                 }
@@ -405,7 +404,6 @@ namespace ElDee
 
                 myList1.Controls.Clear();
                 statusStr.Text = "";
-                //RightPanelCleaner();
             }
 
 
