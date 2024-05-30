@@ -267,7 +267,7 @@ namespace ElDee
                             last_name,
                             first_name,
                             second_name,
-                            (CAST(Faculties.number AS nvarchar(20)) + Specialties.short_name + '-' + CAST(DATEDIFF(DAY, creation_date, GETDATE()) / 365 + 1 AS nvarchar(5)) + 'ДБ-' + group_number),
+                            ('Б' + CAST(ABS(DATEDIFF(YEAR, creation_date, '2000')) AS nvarchar(5)) + '-' +  CAST(Faculties.number AS nvarchar(20)) + Specialties.short_name + '-' + group_number),
                             Students.id 
                             FROM
                             Students, Groups, Faculties, Specialties, Departments 
@@ -284,7 +284,7 @@ namespace ElDee
                 {
                     myStr = searchTBox1.Text;
                     b = Db.SqlSelect($@"SELECT
-                    (CAST(Faculties.number AS nvarchar(20)) + Specialties.short_name + '-' + CAST(DATEDIFF(DAY, creation_date, GETDATE()) / 365 + 1 AS nvarchar(5)) + 'ДБ-' + group_number),
+                    ('Б' + CAST(ABS(DATEDIFF(YEAR, creation_date, '2000')) AS nvarchar(5)) + '-' +  CAST(Faculties.number AS nvarchar(20)) + Specialties.short_name + '-' + group_number),
                     COUNT(Students.id),
                     Groups.id
                     FROM 

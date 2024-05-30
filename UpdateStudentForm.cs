@@ -143,7 +143,7 @@ namespace ElDee
             {
                 var idx = groupComboBox.SelectedIndex;
                 var grp = (string)groupComboBox.Items[idx];
-
+                var date = dateBirthPicker.Value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
 
                 var checkStudent = Db.SqlSelect(
                             $@"
@@ -155,26 +155,28 @@ namespace ElDee
                         last_name = '{lastNameTb.Text}' AND
                         first_name = '{firstNameTb.Text}' AND
                         second_name = '{secondNameTb.Text}' AND
-                        date_of_birth = '{dateBirthPicker.Value}'
+                        date_of_birth = '{date}'
                         ");
 
-                if (checkStudent == null)
+                var studentExists = false;
+
+                foreach (var item in checkStudent)
+                    if (item[0] != null) studentExists = true;
+
+                if (!studentExists)
                 {
-
-
-
                     var sql = Db.SqlInsert($@"
-                UPDATE top(1) 
-                Students 
-                SET 
-                last_name = '{lastNameTb.Text}',
-                first_name = '{firstNameTb.Text}',
-                second_name = '{secondNameTb.Text}',
-                date_of_birth = '{dateBirthPicker.Value}',
-                group_id = (SELECT id FROM Groups WHERE Groups.group_number = '{grp.Substring(grp.Length - 3)}') 
-                where id = {studentId};
-                ");
-                    var date = dateBirthPicker.Value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+                    UPDATE top(1) 
+                    Students 
+                    SET 
+                    last_name = '{lastNameTb.Text}',
+                    first_name = '{firstNameTb.Text}',
+                    second_name = '{secondNameTb.Text}',
+                    date_of_birth = '{date}',
+                    group_id = (SELECT id FROM Groups WHERE Groups.group_number = '{grp.Substring(grp.Length - 3)}') 
+                    where id = {studentId};
+                    ");
+                    
                     if (sql)
                     {
                         MessageBox.Show("Данные успешно обновлены!");
