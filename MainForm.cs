@@ -36,9 +36,9 @@ namespace ElDee
             MyList1_MouseClick();
         }
 
-        /// <summary>
+        
         /// настройки для панели3
-        /// </summary>
+        
         private void Panel3Setting()
         {
             
@@ -111,7 +111,7 @@ namespace ElDee
         {
             if (myList1.Count == 0)
             {
-                //button2.Enabled = false;
+                
                 button3.Enabled = false;
                 button4.Enabled = false;
                 button5.Enabled = false;
@@ -175,13 +175,13 @@ namespace ElDee
                 //первое главное текстовое
                 l1.Text = $"{myList1.SelectedItem.Text1} {myList1.SelectedItem.Text2} {myList1.SelectedItem.Text3}";
                 //управление кнопками
-                //button2.Text = @"Посмотреть учебный план";
+                
                 button3.Text = @"Редактировать";
                 button4.Text = @"Удалить";
                 button5.Text = @"Посмотреть успеваемость";
                 if (myList1.Count != 0)
                 {
-                    //button2.Enabled = true;
+                    
                     button3.Enabled = true;
                     button4.Enabled = true;
                     button5.Enabled = true;
@@ -211,6 +211,7 @@ namespace ElDee
 
                 if (infoButtonFlag == 0)
                 {
+              
                     //послднее текстовое
                     l4.Text = $"Специальность: {info1[0][2]}";
                     //третье текстовое
@@ -233,7 +234,7 @@ namespace ElDee
                 //первое главное текстовое
                 l1.Text = myList1.SelectedItem.Text1;
                 //управление кнопками
-                //button2.Text = @"Посмотреть учебный план";
+              
                 button3.Text = @"Список студентов группы";
                 button4.Text = @"Удалить";
                 button5.Text = @"Посмотреть успеваемость";
@@ -352,7 +353,7 @@ namespace ElDee
             myList1.Controls.Clear();
 
             var b = Db.SqlSelect(@"SELECT
-                    (CAST(Faculties.number AS nvarchar(20)) + Specialties.short_name + '-' + CAST(DATEDIFF(DAY, creation_date, GETDATE()) / 365 + 1 AS nvarchar(5)) + 'ДБ-' + group_number),
+                    ('Б' + CAST(ABS(DATEDIFF(YEAR, creation_date, '2000')) AS nvarchar(5)) + '-' +  CAST(Faculties.number AS nvarchar(20)) + Specialties.short_name + '-' + group_number),
                     COUNT(Students.id),
                     Groups.id
                     FROM 
@@ -367,7 +368,7 @@ namespace ElDee
                     Specialties.department_id = Departments.id AND 
                     Departments.faculty_id = Faculties.id 
                     GROUP BY
-                    Groups.id, (CAST(Faculties.number AS nvarchar(20)) + Specialties.short_name + '-' + CAST(DATEDIFF(DAY, creation_date, GETDATE()) / 365 + 1 AS nvarchar(5)) + 'ДБ-' + group_number)
+                    Groups.id, ('Б' + CAST(ABS(DATEDIFF(YEAR, creation_date, '2000')) AS nvarchar(5)) + '-' + CAST(Faculties.number AS nvarchar(20)) + Specialties.short_name + '-' + group_number)
                     ORDER BY COUNT(Students.id)");
 
 
@@ -378,104 +379,7 @@ namespace ElDee
             statusStr.Text = $@"Найдено {myList1.Count} элементов.";
         }
 
-        //Просмотр учебного плана
-        //private void button2_Click(object sender, EventArgs e)
-        //{
-        //    var newstr = myList1.SelectedItem.IsStudent ? myList1.SelectedItem.Text4.Substring(myList1.SelectedItem.Text4.Length - 3, 3) : myList1.SelectedItem.Text1.Substring(myList1.SelectedItem.Text1.Length - 3, 3);
-        //    var myRequest = Db.SqlSelect($@"SELECT 
-        //    Learning_plans.semester,
-        //    Disciplines.name,
-        //    Learning_plans.number_of_learning_hours,
-        //    Types_of_control.name,
-        //    Learning_plans.course_work
-        //    FROM
-        //    Groups_plans, Groups, Learning_plans, Types_of_control, Disciplines
-        //    WHERE
-        //    Groups.group_number = '{newstr}' AND 
-        //    group_id = Groups.id AND
-        //    learning_plan_id = Learning_plans.id AND
-        //    discipline_id = Disciplines.id AND
-        //    type_of_control_id = Types_of_control.id");
-
-        //    var f = new Form
-        //    {
-        //        FormBorderStyle = FormBorderStyle.FixedDialog,
-        //        Height = 600,
-        //        Width = 1000
-        //    };
-
-        //    var btOk = new Button
-        //    {
-        //        Location = new Point(500, 535),
-        //        Text = @"Закрыть",
-        //        DialogResult = DialogResult.OK
-        //    };
-        //    f.Controls.Add(btOk);
-
-
-        //    var mainPanel = new Panel
-        //    {
-        //        BorderStyle = BorderStyle.Fixed3D,
-        //        Dock = DockStyle.Top,
-        //        Height = 490
-        //    };
-        //    f.Controls.Add(mainPanel);
-        //    for (var i = 8; i >= 1; i--)
-        //    {
-        //        var dgv = new DataGridView
-        //        {
-        //            ReadOnly = true,
-        //            AllowUserToAddRows = false,
-        //            AllowUserToDeleteRows = false,
-        //            AllowUserToOrderColumns = false,
-        //            AllowUserToResizeRows = false,
-        //            AllowDrop = false,
-        //            RowHeadersVisible = false,
-        //            ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize,
-        //            Dock = DockStyle.Top,
-        //            ColumnCount = 4,
-        //            AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
-        //            Height = 25
-        //        };
-
-        //        dgv.Columns[0].Name = @"Дисциплина";
-        //        dgv.Columns[1].Name = @"Часы";
-        //        dgv.Columns[2].Name = @"Курсовая";
-        //        dgv.Columns[3].Name = @"Вид контроля";
-        //        dgv.RowsAdded += DGV_RowsAdded;
-        //        mainPanel.Controls.Add(dgv);
-
-        //        var lb1 = new Label
-        //        {
-        //            BorderStyle = BorderStyle.FixedSingle,
-        //            Text = $@"{i} семестр",
-        //            TextAlign = ContentAlignment.MiddleCenter,
-        //            Font = new Font("Times New Roman", 14),
-        //            Dock = DockStyle.Top
-        //        };
-        //        mainPanel.Controls.Add(lb1);
-        //        foreach (var item in myRequest)
-        //            if (Convert.ToInt32(item[0]) == i)
-        //                dgv.Rows.Add(item[1], item[2], Convert.ToBoolean(item[4]) ? "да" : "нет", item[3]);
-
-        //    }
-
-        //    var lb = new Label
-        //    {
-        //        Text = @"Учебный план",
-        //        Font = new Font("Times New Roman", 20),
-        //        TextAlign = ContentAlignment.MiddleCenter,
-        //        Height = 40,
-        //        Dock = DockStyle.Top
-        //    };
-        //    f.Controls.Add(lb);
-
-        //    mainPanel.AutoScroll = true;
-        //    mainPanel.Controls[mainPanel.Controls.Count - 1].Select();
-
-        //    f.ShowDialog();
-
-        //}
+        
 
         private void DGV_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {

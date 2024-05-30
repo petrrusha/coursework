@@ -144,7 +144,26 @@ namespace ElDee
                 var idx = groupComboBox.SelectedIndex;
                 var grp = (string)groupComboBox.Items[idx];
 
-                var sql = Db.SqlInsert($@"
+
+                var checkStudent = Db.SqlSelect(
+                            $@"
+                        SELECT  
+                            id
+                        FROM
+                        Students
+                        WHERE
+                        last_name = '{lastNameTb.Text}' AND
+                        first_name = '{firstNameTb.Text}' AND
+                        second_name = '{secondNameTb.Text}' AND
+                        date_of_birth = '{dateBirthPicker.Value}'
+                        ");
+
+                if (checkStudent == null)
+                {
+
+
+
+                    var sql = Db.SqlInsert($@"
                 UPDATE top(1) 
                 Students 
                 SET 
@@ -152,20 +171,25 @@ namespace ElDee
                 first_name = '{firstNameTb.Text}',
                 second_name = '{secondNameTb.Text}',
                 date_of_birth = '{dateBirthPicker.Value}',
-                group_id = (SELECT id FROM Groups WHERE Groups.group_number = '{grp.Substring(9)}') 
+                group_id = (SELECT id FROM Groups WHERE Groups.group_number = '{grp.Substring(grp.Length - 3)}') 
                 where id = {studentId};
                 ");
-                var date = dateBirthPicker.Value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
-                //MessageBox.Show(date);
-                if (sql)
-                {
-                    MessageBox.Show("Данные успешно обновлены!");
-                    Close();
-                }else
-                {
-                    MessageBox.Show("Сломалось");
+                    var date = dateBirthPicker.Value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+                    //MessageBox.Show(date);
+                    if (sql)
+                    {
+                        MessageBox.Show("Данные успешно обновлены!");
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Сломалось");
+                    }
                 }
-                
+                else
+                {
+                    MessageBox.Show("Такой студент уже существует!");
+                }
             }
             else
                 MessageBox.Show("Не все поля заполнены!!!");

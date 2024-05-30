@@ -259,13 +259,32 @@ namespace ElDee
                     facultyComboBox.SelectedItem != null && departmentComboBox.SelectedItem != null &&
                     specialtyComboBox.SelectedItem != null && groupComboBox.SelectedItem != null)
                 {
+
                     ////////////////////////////////////////////
                     ///
                     var idx = groupComboBox.SelectedIndex;
                     var grp = (string)groupComboBox.Items[idx];
                     //MessageBox.Show(dateBirthPicker.Text);
-                    var sqlFlag = Db.SqlInsert(
+
+
+                    var checkStudent = Db.SqlSelect(
                             $@"
+                        SELECT  
+                            id
+                        FROM
+                        Students
+                        WHERE
+                        last_name = '{lastNameTb.Text}' AND
+                        first_name = '{firstNameTb.Text}' AND
+                        second_name = '{secondNameTb.Text}' AND
+                        date_of_birth = '{dateBirthPicker.Text}'
+                        ");
+                    if (checkStudent == null)
+                    {
+
+
+                        var sqlFlag = Db.SqlInsert(
+                                $@"
                         INSERT INTO Students(
                             last_name,
                             first_name,
@@ -278,17 +297,22 @@ namespace ElDee
                         '{firstNameTb.Text}',
                         '{secondNameTb.Text}',
                         '{dateBirthPicker.Text}',
-                        (SELECT id FROM Groups WHERE Groups.group_number = '{grp.Substring(9)}')
+                        (SELECT id FROM Groups WHERE Groups.group_number = '{grp.Substring(grp.Length - 3)}')
                         )");
 
-                    if (sqlFlag)
-                    {
-                        MessageBox.Show("Данные успешно добавлены!");
-                        Close();
-                    }
+                        if (sqlFlag)
+                        {
+                            MessageBox.Show("Данные успешно добавлены!");
+                            Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ошибка!");
+                        }
+                    } 
                     else
                     {
-                        MessageBox.Show("Некорректная группа!");
+                        MessageBox.Show("Такой студент уже существует!");
                     }
                 }
                 else
