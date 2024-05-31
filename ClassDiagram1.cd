@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ElDee.AddStudent">
+    <Position X="2.75" Y="3.25" Width="3.25" />
+    <Members>
+      <Field Name="addButton" Hidden="true" />
+      <Field Name="cancelButton" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="dateBirthLabel" Hidden="true" />
+      <Field Name="dateBirthPicker" Hidden="true" />
+      <Field Name="departmentComboBox" Hidden="true" />
+      <Field Name="departmentLabel" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="facultyComboBox" Hidden="true" />
+      <Field Name="facultyLabel" Hidden="true" />
+      <Field Name="firstNameLabel" Hidden="true" />
+      <Field Name="firstNameTb" Hidden="true" />
+      <Field Name="groupComboBox" Hidden="true" />
+      <Field Name="groupLabel" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="lastNameLabel" Hidden="true" />
+      <Field Name="lastNameTb" Hidden="true" />
+      <Field Name="mainPanel" Hidden="true" />
+      <Field Name="secondNameLabel" Hidden="true" />
+      <Field Name="secondNameTb" Hidden="true" />
+      <Field Name="specialtyComboBox" Hidden="true" />
+      <Field Name="specialtyLabel" Hidden="true" />
+      <Field Name="tabControl1" Hidden="true" />
+      <Field Name="tabPage1" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>ACAAIARAAWYYAAAgQAGCAgACAEAAJIIAgAAwAIBBBAA=</HashCode>
+      <FileName>AddStudent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElDee.Db">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAQAAAAAAAAAAAAJAAAEAAAAAAAQA=</HashCode>
+      <FileName>DB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElDee.MainForm">
+    <Position X="6.25" Y="0.5" Width="3" />
+    <Members>
+      <Field Name="button1" Hidden="true" />
+      <Field Name="button3" Hidden="true" />
+      <Field Name="button4" Hidden="true" />
+      <Field Name="button5" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="label7" Hidden="true" />
+      <Field Name="label8" Hidden="true" />
+      <Field Name="label9" Hidden="true" />
+      <Field Name="linkLabel1" Hidden="true" />
+      <Field Name="menuStrip1" Hidden="true" />
+      <Field Name="myList1" Hidden="true" />
+      <Field Name="panel1" Hidden="true" />
+      <Field Name="panel2" Hidden="true" />
+      <Field Name="panel3" Hidden="true" />
+      <Field Name="searchTBox1" Hidden="true" />
+      <Field Name="statistic_panel2" Hidden="true" />
+      <Field Name="statusStr" Hidden="true" />
+      <Field Name="toolTip1" Hidden="true" />
+      <Field Name="добавитьСтудентаToolStripMenuItem" Hidden="true" />
+      <Field Name="функцииToolStripMenuItem" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>FQAAAAARoCEQADCAAISBgCAGAMA4EAAAgFgMAQAAgAg=</HashCode>
+      <FileName>MainForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElDee.MyList">
+    <Position X="12" Y="0.75" Width="1.75" />
+    <Members>
+      <Property Name="Count" Hidden="true" />
+      <Event Name="CountChanged" Hidden="true" />
+      <Property Name="Items" Hidden="true" />
+      <Property Name="SelectedItem" Hidden="true" />
+      <Event Name="SelEvent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="ElDee.MyList.MyDel" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MyList.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="ElDee.MyList.Mydel2" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MyList.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAIAABCAAAAAAAAAQAgRAAAIAAABCAAAAAAAA=</HashCode>
+      <FileName>MyList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElDee.ListItem">
+    <Position X="9.5" Y="3.25" Width="2.25" />
+    <Members>
+      <Property Name="Id" Hidden="true" />
+      <Property Name="IsStudent" Hidden="true" />
+      <Property Name="Text1" Hidden="true" />
+      <Property Name="Text2" Hidden="true" />
+      <Property Name="Text3" Hidden="true" />
+      <Property Name="Text4" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>ACACAAAAAEAAAEAAAABABAAAAAAAAgASAAAAgAAAAAA=</HashCode>
+      <FileName>MyList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElDee.Program">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElDee.SearchTBox">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SearchTBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElDee.UpdateStudentForm">
+    <Position X="6" Y="6.25" Width="3.25" />
+    <Members>
+      <Field Name="cancelButton" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="dateBirthLabel" Hidden="true" />
+      <Field Name="dateBirthPicker" Hidden="true" />
+      <Field Name="departmentComboBox" Hidden="true" />
+      <Field Name="departmentLabel" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="facultyComboBox" Hidden="true" />
+      <Field Name="facultyLabel" Hidden="true" />
+      <Field Name="firstNameLabel" Hidden="true" />
+      <Field Name="firstNameTb" Hidden="true" />
+      <Field Name="groupComboBox" Hidden="true" />
+      <Field Name="groupLabel" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="lastNameLabel" Hidden="true" />
+      <Field Name="lastNameTb" Hidden="true" />
+      <Field Name="mainPanel" Hidden="true" />
+      <Field Name="secondNameLabel" Hidden="true" />
+      <Field Name="secondNameTb" Hidden="true" />
+      <Field Name="specialtyComboBox" Hidden="true" />
+      <Field Name="specialtyLabel" Hidden="true" />
+      <Field Name="updateButton" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>ACIAIARAAWYYQAAgQAGCAgACAEAAJIIAAAAAAIBAAAA=</HashCode>
+      <FileName>UpdateStudentForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Windows.Forms.Form" Collapsed="true">
+    <Position X="3.75" Y="6.25" Width="1.5" />
+    <Members>
+      <Property Name="AcceptButton" Hidden="true" />
+      <Event Name="Activated" Hidden="true" />
+      <Property Name="ActiveForm" Hidden="true" />
+      <Property Name="ActiveMdiChild" Hidden="true" />
+      <Property Name="AllowTransparency" Hidden="true" />
+      <Property Name="AutoScale" Hidden="true" />
+      <Property Name="AutoScaleBaseSize" Hidden="true" />
+      <Property Name="AutoScroll" Hidden="true" />
+      <Property Name="AutoSize" Hidden="true" />
+      <Event Name="AutoSizeChanged" Hidden="true" />
+      <Property Name="AutoSizeMode" Hidden="true" />
+      <Property Name="AutoValidate" Hidden="true" />
+      <Event Name="AutoValidateChanged" Hidden="true" />
+      <Property Name="BackColor" Hidden="true" />
+      <Property Name="CancelButton" Hidden="true" />
+      <Property Name="ClientSize" Hidden="true" />
+      <Event Name="Closed" Hidden="true" />
+      <Event Name="Closing" Hidden="true" />
+      <Property Name="ControlBox" Hidden="true" />
+      <Property Name="CreateParams" Hidden="true" />
+      <Event Name="Deactivate" Hidden="true" />
+      <Property Name="DefaultImeMode" Hidden="true" />
+      <Property Name="DefaultSize" Hidden="true" />
+      <Property Name="DesktopBounds" Hidden="true" />
+      <Property Name="DesktopLocation" Hidden="true" />
+      <Property Name="DialogResult" Hidden="true" />
+      <Event Name="DpiChanged" Hidden="true" />
+      <Property Name="FormBorderStyle" Hidden="true" />
+      <Event Name="FormClosed" Hidden="true" />
+      <Event Name="FormClosing" Hidden="true" />
+      <Property Name="HelpButton" Hidden="true" />
+      <Event Name="HelpButtonClicked" Hidden="true" />
+      <Property Name="Icon" Hidden="true" />
+      <Event Name="InputLanguageChanged" Hidden="true" />
+      <Event Name="InputLanguageChanging" Hidden="true" />
+      <Property Name="IsMdiChild" Hidden="true" />
+      <Property Name="IsMdiContainer" Hidden="true" />
+      <Property Name="IsRestrictedWindow" Hidden="true" />
+      <Property Name="KeyPreview" Hidden="true" />
+      <Event Name="Load" Hidden="true" />
+      <Property Name="Location" Hidden="true" />
+      <Property Name="MainMenuStrip" Hidden="true" />
+      <Property Name="Margin" Hidden="true" />
+      <Event Name="MarginChanged" Hidden="true" />
+      <Property Name="MaximizeBox" Hidden="true" />
+      <Property Name="MaximizedBounds" Hidden="true" />
+      <Event Name="MaximizedBoundsChanged" Hidden="true" />
+      <Property Name="MaximumSize" Hidden="true" />
+      <Event Name="MaximumSizeChanged" Hidden="true" />
+      <Event Name="MdiChildActivate" Hidden="true" />
+      <Property Name="MdiChildren" Hidden="true" />
+      <Property Name="MdiParent" Hidden="true" />
+      <Property Name="Menu" Hidden="true" />
+      <Event Name="MenuComplete" Hidden="true" />
+      <Event Name="MenuStart" Hidden="true" />
+      <Property Name="MergedMenu" Hidden="true" />
+      <Property Name="MinimizeBox" Hidden="true" />
+      <Property Name="MinimumSize" Hidden="true" />
+      <Event Name="MinimumSizeChanged" Hidden="true" />
+      <Property Name="Modal" Hidden="true" />
+      <Property Name="Opacity" Hidden="true" />
+      <Property Name="OwnedForms" Hidden="true" />
+      <Property Name="Owner" Hidden="true" />
+      <Event Name="ResizeBegin" Hidden="true" />
+      <Event Name="ResizeEnd" Hidden="true" />
+      <Property Name="RestoreBounds" Hidden="true" />
+      <Property Name="RightToLeftLayout" Hidden="true" />
+      <Event Name="RightToLeftLayoutChanged" Hidden="true" />
+      <Property Name="ShowIcon" Hidden="true" />
+      <Property Name="ShowInTaskbar" Hidden="true" />
+      <Event Name="Shown" Hidden="true" />
+      <Property Name="ShowWithoutActivation" Hidden="true" />
+      <Property Name="Size" Hidden="true" />
+      <Property Name="SizeGripStyle" Hidden="true" />
+      <Property Name="StartPosition" Hidden="true" />
+      <Property Name="TabIndex" Hidden="true" />
+      <Event Name="TabIndexChanged" Hidden="true" />
+      <Property Name="TabStop" Hidden="true" />
+      <Event Name="TabStopChanged" Hidden="true" />
+      <Property Name="Text" Hidden="true" />
+      <Property Name="TopLevel" Hidden="true" />
+      <Property Name="TopMost" Hidden="true" />
+      <Property Name="TransparencyKey" Hidden="true" />
+      <Property Name="WindowState" Hidden="true" />
+    </Members>
+    <NestedTypes>
+      <Class Name="System.Windows.Forms.Form.ControlCollection" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Object">
+    <Position X="0.5" Y="1" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Windows.Forms.RichTextBox" Collapsed="true">
+    <Position X="9.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Windows.Forms.Panel">
+    <Position X="12.25" Y="4.25" Width="1.5" />
+    <Members>
+      <Property Name="AutoSize" Hidden="true" />
+      <Event Name="AutoSizeChanged" Hidden="true" />
+      <Property Name="AutoSizeMode" Hidden="true" />
+      <Property Name="BorderStyle" Hidden="true" />
+      <Property Name="CreateParams" Hidden="true" />
+      <Property Name="DefaultSize" Hidden="true" />
+      <Event Name="KeyDown" Hidden="true" />
+      <Event Name="KeyPress" Hidden="true" />
+      <Event Name="KeyUp" Hidden="true" />
+      <Property Name="TabStop" Hidden="true" />
+      <Property Name="Text" Hidden="true" />
+      <Event Name="TextChanged" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

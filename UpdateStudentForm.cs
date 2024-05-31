@@ -27,7 +27,7 @@ namespace ElDee
             Faculties.name,
             Departments.name,
             Specialties.name,
-            (CAST(Faculties.number AS nvarchar(20)) + Specialties.short_name + '-' + CAST(DATEDIFF(DAY, creation_date, GETDATE()) / 365 + 1 AS nvarchar(5)) + 'ДБ-' + group_number)
+            ('Б' + CAST(ABS(DATEDIFF(YEAR, creation_date, '2000')) AS nvarchar(5)) + '-' +  CAST(Faculties.number AS nvarchar(20)) + Specialties.short_name + '-' + group_number)
 
             FROM
             Students
@@ -117,7 +117,7 @@ namespace ElDee
             groupComboBox.Items.Clear();
 
             var req = Db.SqlSelect($@"SELECT
-            (CAST(Faculties.number AS nvarchar(20)) + Specialties.short_name + '-' + CAST(DATEDIFF(DAY, creation_date, GETDATE()) / 365 + 1 AS nvarchar(5)) + 'ДБ-' + group_number) 
+            ('Б' + CAST(ABS(DATEDIFF(YEAR, creation_date, '2000')) AS nvarchar(5)) + '-' +  CAST(Faculties.number AS nvarchar(20)) + Specialties.short_name + '-' + group_number) 
             FROM
             Groups, Faculties, Specialties, Departments 
             WHERE 
